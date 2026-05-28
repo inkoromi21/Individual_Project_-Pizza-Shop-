@@ -9,13 +9,13 @@ namespace Pizza_Shop
     static void Main(string[] args)
     {
       Console.OutputEncoding = System.Text.Encoding.UTF8;
-      Console.Title = "Pizza Shop (черновик)";
+      Console.Title = "Pizza Shop";
 
       PizzaStore store = new SimplePizzaStore();
 
       while (true)
       {
-        var action = ConsoleMenu.ReadAction();
+        string action = ConsoleMenu.ReadAction();
         Console.WriteLine();
 
         if (action == "0")
@@ -39,12 +39,15 @@ namespace Pizza_Shop
         }
 
         ConsoleMenu.PrintPizzaMenu();
-        var pizzaType = ConsoleMenu.ReadPizzaType();
-        var pizza = store.OrderPizza(pizzaType);
-        if (pizza == null)
+        PizzaType pizzaType = ConsoleMenu.ReadPizzaType();
+        if (pizzaType == PizzaType.Unknown)
         {
-          Console.WriteLine("Такой пиццы нет в меню.");
+          Console.WriteLine("Заказ отменён.");
           Console.WriteLine();
+        }
+        else
+        {
+          store.OrderPizza(pizzaType);
         }
 
         ConsoleMenu.ContinuePrompt();

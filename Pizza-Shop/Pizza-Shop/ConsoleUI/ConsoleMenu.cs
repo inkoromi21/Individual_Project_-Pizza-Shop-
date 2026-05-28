@@ -12,7 +12,7 @@ namespace Pizza_Shop.ConsoleUI
       Console.WriteLine("2) Показать меню");
       Console.WriteLine("0) Выход");
       Console.Write("Ваш выбор: ");
-      return Console.ReadLine();
+      return Console.ReadLine()?.Trim();
     }
 
     public static void PrintPizzaMenu()
@@ -26,21 +26,34 @@ namespace Pizza_Shop.ConsoleUI
 
     public static PizzaType ReadPizzaType()
     {
-      Console.Write("Введите номер пиццы: ");
-      var input = Console.ReadLine();
-      Console.WriteLine();
-
-      if (!int.TryParse(input, out var number))
+      while (true)
       {
-        return PizzaType.Unknown;
-      }
+        Console.Write("Введите номер пиццы (0 — отмена): ");
+        string input = Console.ReadLine()?.Trim();
+        Console.WriteLine();
 
-      if (!Enum.IsDefined(typeof(PizzaType), number))
-      {
-        return PizzaType.Unknown;
-      }
+        if (input == "0")
+        {
+          return PizzaType.Unknown;
+        }
 
-      return (PizzaType)number;
+        int number;
+        if (!int.TryParse(input, out number))
+        {
+          Console.WriteLine("Введите число из меню.");
+          Console.WriteLine();
+          continue;
+        }
+
+        if (!Enum.IsDefined(typeof(PizzaType), number))
+        {
+          Console.WriteLine("Такой пиццы нет в меню. Попробуйте снова.");
+          Console.WriteLine();
+          continue;
+        }
+
+        return (PizzaType)number;
+      }
     }
 
     public static void ContinuePrompt()

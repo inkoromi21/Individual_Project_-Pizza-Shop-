@@ -8,7 +8,7 @@ namespace Pizza_Shop.Stores
   {
     public Pizza OrderPizza(PizzaType type)
     {
-      var pizza = CreatePizza(type);
+      Pizza pizza = CreatePizza(type);
       if (pizza == null)
       {
         return null;
