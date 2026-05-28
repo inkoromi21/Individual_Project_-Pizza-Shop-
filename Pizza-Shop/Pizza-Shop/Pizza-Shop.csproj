@@ -49,6 +49,7 @@
     <Compile Include="Pizzas\PepperoniPizza.cs" />
     <Compile Include="Pizzas\Pizza.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stores\PizzaStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

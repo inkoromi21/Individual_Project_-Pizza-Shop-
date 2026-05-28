@@ -1,5 +1,6 @@
 ﻿using System;
 using Pizza_Shop.Pizzas;
+using Pizza_Shop.Stores;
 
 namespace Pizza_Shop
 {
@@ -47,20 +48,12 @@ namespace Pizza_Shop
         var pizzaChoice = Console.ReadLine();
         Console.WriteLine();
 
-        switch (pizzaChoice)
+        var store = new PizzaStore();
+        var pizza = store.OrderPizza(pizzaChoice);
+        if (pizza == null)
         {
-          case "1":
-            ProcessOrder(new MargheritaPizza());
-            break;
-          case "2":
-            ProcessOrder(new PepperoniPizza());
-            break;
-          case "3":
-            ProcessOrder(new HawaiianPizza());
-            break;
-          default:
-            Console.WriteLine("Такой пиццы нет в меню.");
-            break;
+          Console.WriteLine("Такой пиццы нет в меню.");
+          Console.WriteLine();
         }
 
         ContinuePrompt();
@@ -73,18 +66,6 @@ namespace Pizza_Shop
       Console.WriteLine("1) Маргарита");
       Console.WriteLine("2) Пепперони");
       Console.WriteLine("3) Гавайская");
-      Console.WriteLine();
-    }
-
-    private static void ProcessOrder(Pizza pizza)
-    {
-      Console.WriteLine($"Заказ принят: {pizza.Name}");
-      Console.WriteLine("Готовим...");
-      pizza.Prepare();
-      pizza.Bake();
-      pizza.Cut();
-      pizza.Box();
-      Console.WriteLine("Готово! Приятного аппетита.");
       Console.WriteLine();
     }
 
