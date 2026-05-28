@@ -3,7 +3,7 @@ using Pizza_Shop.Pizzas;
 
 namespace Pizza_Shop.Stores
 {
-  internal class PizzaStore
+  internal abstract class PizzaStore
   {
     public Pizza OrderPizza(string type)
     {
@@ -25,20 +25,7 @@ namespace Pizza_Shop.Stores
       return pizza;
     }
 
-    private Pizza CreatePizza(string type)
-    {
-      switch (type)
-      {
-        case "1":
-          return new MargheritaPizza();
-        case "2":
-          return new PepperoniPizza();
-        case "3":
-          return new HawaiianPizza();
-        default:
-          return null;
-      }
-    }
+    protected abstract Pizza CreatePizza(string type);
   }
 }
 

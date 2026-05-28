@@ -11,6 +11,8 @@ namespace Pizza_Shop
       Console.OutputEncoding = System.Text.Encoding.UTF8;
       Console.Title = "Pizza Shop (черновик)";
 
+      PizzaStore store = new SimplePizzaStore();
+
       while (true)
       {
         Console.WriteLine("=== PIZZA SHOP ===");
@@ -48,7 +50,6 @@ namespace Pizza_Shop
         var pizzaChoice = Console.ReadLine();
         Console.WriteLine();
 
-        var store = new PizzaStore();
         var pizza = store.OrderPizza(pizzaChoice);
         if (pizza == null)
         {
