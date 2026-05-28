@@ -1,8 +1,16 @@
+using System;
 using Pizza_Shop.ConsoleUI;
 using Pizza_Shop.Pizzas;
 
 namespace Pizza_Shop.Stores {
-  internal class SimplePizzaStore : PizzaStore {
+  internal class PremiumPizzaStore : PizzaStore {
+    public override Pizza OrderPizza(PizzaType type) {
+      Console.WriteLine("=== Премиум-пиццерия ===");
+      Console.WriteLine("Шеф-повар лично контролирует ваш заказ.");
+      Console.WriteLine();
+      return base.OrderPizza(type);
+    }
+
     protected override Pizza CreatePizza(PizzaType type) {
       switch (type) {
         case PizzaType.Margherita:

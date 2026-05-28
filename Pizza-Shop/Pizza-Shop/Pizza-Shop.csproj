@@ -46,12 +46,15 @@
     <Compile Include="ConsoleUI\ConsoleMenu.cs" />
     <Compile Include="ConsoleUI\PizzaType.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Pizzas\FourCheesePizza.cs" />
     <Compile Include="Pizzas\HawaiianPizza.cs" />
     <Compile Include="Pizzas\MargheritaPizza.cs" />
+    <Compile Include="Pizzas\MeatLoversPizza.cs" />
     <Compile Include="Pizzas\PepperoniPizza.cs" />
     <Compile Include="Pizzas\Pizza.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stores\PizzaStore.cs" />
+    <Compile Include="Stores\PremiumPizzaStore.cs" />
     <Compile Include="Stores\SimplePizzaStore.cs" />
   </ItemGroup>
   <ItemGroup>

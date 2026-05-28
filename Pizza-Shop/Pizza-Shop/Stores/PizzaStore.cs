@@ -2,15 +2,11 @@ using System;
 using Pizza_Shop.ConsoleUI;
 using Pizza_Shop.Pizzas;
 
-namespace Pizza_Shop.Stores
-{
-  internal abstract class PizzaStore
-  {
-    public Pizza OrderPizza(PizzaType type)
-    {
+namespace Pizza_Shop.Stores {
+  internal abstract class PizzaStore {
+    public virtual Pizza OrderPizza(PizzaType type) {
       Pizza pizza = CreatePizza(type);
-      if (pizza == null)
-      {
+      if (pizza == null) {
         return null;
       }
 
@@ -29,4 +25,3 @@ namespace Pizza_Shop.Stores
     protected abstract Pizza CreatePizza(PizzaType type);
   }
 }
-

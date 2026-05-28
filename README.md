@@ -20,9 +20,9 @@
 
 | Роль в паттерне | Класс в проекте |
 |-----------------|-----------------|
-| Product | `Pizza` и наследники (`MargheritaPizza`, `PepperoniPizza`, `HawaiianPizza`) |
+| Product | `Pizza` и наследники (`MargheritaPizza`, `PepperoniPizza`, `HawaiianPizza`, `FourCheesePizza`, `MeatLoversPizza`) |
 | Creator | `PizzaStore` (абстрактный) |
-| Concrete Creator | `SimplePizzaStore` |
+| Concrete Creator | `SimplePizzaStore`, `PremiumPizzaStore` |
 | Factory Method | `CreatePizza(PizzaType type)` |
 | Template Method | `OrderPizza(PizzaType type)` — общий сценарий заказа |
 
@@ -38,24 +38,27 @@ Pizza-Shop/
     Program.cs              — точка входа, цикл меню
     ConsoleUI/              — ввод и отображение меню
     Pizzas/                 — продукты (базовая и конкретные пиццы)
-    Stores/                 — создатели (PizzaStore, SimplePizzaStore)
+    Stores/                 — создатели (PizzaStore, SimplePizzaStore, PremiumPizzaStore)
 ```
 
 ## ▶️ Как запустить
 
 1. Открыть решение `Pizza-Shop/Pizza-Shop.slnx` в Visual Studio (или проект `Pizza-Shop/Pizza-Shop/Pizza-Shop.csproj`).
 2. Собрать и запустить проект (F5 / Ctrl+F5).
-3. В консоли выбрать действие:
+3. При запуске выбрать пиццерию: `1` — обычная, `2` — премиум.
+4. В консоли выбрать действие:
    - `1` — заказать пиццу;
    - `2` — показать меню;
+   - `3` — сменить пиццерию;
    - `0` — выход.
 
 ## 🧪 Примеры сценариев
 
-1. **Заказ Маргариты:** `1` → `1` → в консоли этапы приготовления и «Готово!».
-2. **Просмотр меню:** `2` → список пицц.
-3. **Неверный номер пиццы:** `1` → `9` → сообщение «Такой пиццы нет в меню».
-4. **Выход:** `0`.
+1. **Заказ в обычной пиццерии:** `1` (обычная) → `1` (заказ) → `1` (Маргарита) → этапы приготовления.
+2. **Заказ в премиум-пиццерии:** `2` (премиум) → `1` → `4` (Четыре сыра) → сообщение от шеф-повара и приготовление.
+3. **Пепперони с особым шагом:** заказ `2` (Пепперони) → дополнительная строка про острую пепперони при `Prepare()`.
+4. **Смена пиццерии:** `3` → выбор другой пиццерии.
+5. **Выход:** `0`.
 
 ## 🔀 GitHub Flow
 
