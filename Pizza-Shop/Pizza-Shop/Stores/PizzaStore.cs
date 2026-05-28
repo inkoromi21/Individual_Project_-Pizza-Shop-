@@ -1,11 +1,12 @@
 using System;
+using Pizza_Shop.ConsoleUI;
 using Pizza_Shop.Pizzas;
 
 namespace Pizza_Shop.Stores
 {
   internal abstract class PizzaStore
   {
-    public Pizza OrderPizza(string type)
+    public Pizza OrderPizza(PizzaType type)
     {
       var pizza = CreatePizza(type);
       if (pizza == null)
@@ -25,7 +26,7 @@ namespace Pizza_Shop.Stores
       return pizza;
     }
 
-    protected abstract Pizza CreatePizza(string type);
+    protected abstract Pizza CreatePizza(PizzaType type);
   }
 }
 

@@ -1,18 +1,19 @@
+using Pizza_Shop.ConsoleUI;
 using Pizza_Shop.Pizzas;
 
 namespace Pizza_Shop.Stores
 {
   internal class SimplePizzaStore : PizzaStore
   {
-    protected override Pizza CreatePizza(string type)
+    protected override Pizza CreatePizza(PizzaType type)
     {
       switch (type)
       {
-        case "1":
+        case PizzaType.Margherita:
           return new MargheritaPizza();
-        case "2":
+        case PizzaType.Pepperoni:
           return new PepperoniPizza();
-        case "3":
+        case PizzaType.Hawaiian:
           return new HawaiianPizza();
         default:
           return null;

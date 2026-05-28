@@ -1,5 +1,5 @@
 ﻿using System;
-using Pizza_Shop.Pizzas;
+using Pizza_Shop.ConsoleUI;
 using Pizza_Shop.Stores;
 
 namespace Pizza_Shop
@@ -15,14 +15,7 @@ namespace Pizza_Shop
 
       while (true)
       {
-        Console.WriteLine("=== PIZZA SHOP ===");
-        Console.WriteLine("Выберите действие:");
-        Console.WriteLine("1) Заказать пиццу");
-        Console.WriteLine("2) Показать меню");
-        Console.WriteLine("0) Выход");
-        Console.Write("Ваш выбор: ");
-
-        var action = Console.ReadLine();
+        var action = ConsoleMenu.ReadAction();
         Console.WriteLine();
 
         if (action == "0")
@@ -33,8 +26,8 @@ namespace Pizza_Shop
 
         if (action == "2")
         {
-          PrintMenu();
-          ContinuePrompt();
+          ConsoleMenu.PrintPizzaMenu();
+          ConsoleMenu.ContinuePrompt();
           continue;
         }
 
@@ -45,36 +38,17 @@ namespace Pizza_Shop
           continue;
         }
 
-        PrintMenu();
-        Console.Write("Введите номер пиццы: ");
-        var pizzaChoice = Console.ReadLine();
-        Console.WriteLine();
-
-        var pizza = store.OrderPizza(pizzaChoice);
+        ConsoleMenu.PrintPizzaMenu();
+        var pizzaType = ConsoleMenu.ReadPizzaType();
+        var pizza = store.OrderPizza(pizzaType);
         if (pizza == null)
         {
           Console.WriteLine("Такой пиццы нет в меню.");
           Console.WriteLine();
         }
 
-        ContinuePrompt();
+        ConsoleMenu.ContinuePrompt();
       }
-    }
-
-    private static void PrintMenu()
-    {
-      Console.WriteLine("Меню:");
-      Console.WriteLine("1) Маргарита");
-      Console.WriteLine("2) Пепперони");
-      Console.WriteLine("3) Гавайская");
-      Console.WriteLine();
-    }
-
-    private static void ContinuePrompt()
-    {
-      Console.Write("Нажмите Enter, чтобы продолжить...");
-      Console.ReadLine();
-      Console.WriteLine();
     }
   }
 }
