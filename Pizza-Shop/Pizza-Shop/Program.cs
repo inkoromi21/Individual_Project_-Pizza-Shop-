@@ -1,4 +1,5 @@
 ﻿using System;
+using Pizza_Shop.Pizzas;
 
 namespace Pizza_Shop
 {
@@ -49,13 +50,13 @@ namespace Pizza_Shop
         switch (pizzaChoice)
         {
           case "1":
-            ProcessOrder("Маргарита");
+            ProcessOrder(new MargheritaPizza());
             break;
           case "2":
-            ProcessOrder("Пепперони");
+            ProcessOrder(new PepperoniPizza());
             break;
           case "3":
-            ProcessOrder("Гавайская");
+            ProcessOrder(new HawaiianPizza());
             break;
           default:
             Console.WriteLine("Такой пиццы нет в меню.");
@@ -75,14 +76,14 @@ namespace Pizza_Shop
       Console.WriteLine();
     }
 
-    private static void ProcessOrder(string pizzaName)
+    private static void ProcessOrder(Pizza pizza)
     {
-      Console.WriteLine($"Заказ принят: {pizzaName}");
+      Console.WriteLine($"Заказ принят: {pizza.Name}");
       Console.WriteLine("Готовим...");
-      Console.WriteLine($"- Подготовка ингредиентов для \"{pizzaName}\"");
-      Console.WriteLine($"- Выпекаем \"{pizzaName}\"");
-      Console.WriteLine($"- Нарезаем \"{pizzaName}\"");
-      Console.WriteLine($"- Упаковываем \"{pizzaName}\"");
+      pizza.Prepare();
+      pizza.Bake();
+      pizza.Cut();
+      pizza.Box();
       Console.WriteLine("Готово! Приятного аппетита.");
       Console.WriteLine();
     }
